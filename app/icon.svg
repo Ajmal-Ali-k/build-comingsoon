@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="128" fill="#163300" />
-  <rect x="104" y="72" width="104" height="368" rx="52" fill="#f8fff3" />
-  <circle cx="300" cy="316" r="140" fill="#f8fff3" />
-  <circle cx="300" cy="316" r="68" fill="#163300" />
-  <circle cx="386" cy="116" r="34" fill="#9fe870" />
+  <rect width="512" height="512" rx="128" fill="#EDEDEA" />
+  <g transform="translate(56 56) scale(2)">
+    <clipPath id="mark"><circle cx="100" cy="100" r="100" /></clipPath>
+    <g clip-path="url(#mark)">
+      <rect width="200" height="200" fill="#2E5BFF" />
+      <path d="M-8 0H124C116 47 63 83-8 88Z" fill="#A8BDFF" />
+      <path d="M-8 88C59 84 106 53 124 0H208V120C169 88 115 87 70 108C38 123 12 128-8 125Z" fill="#6B8AFF" />
+      <path d="M-8 142C41 128 88 117 128 120C155 123 179 139 208 169V208H-8Z" fill="#0A1628" />
+    </g>
+  </g>
 </svg>

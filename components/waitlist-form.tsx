@@ -30,7 +30,7 @@ export function WaitlistForm() {
     return (
       <div className="form-status" role="status" aria-live="polite">
         <CheckCircle weight="fill" aria-hidden="true" />
-        <div><strong>You&apos;re on the list.</strong><p>We&apos;ll send one email when Build launches.</p></div>
+        <div><strong>You&apos;re on the list.</strong><p>We&apos;ll send one email when Billd launches.</p></div>
       </div>
     );
   }

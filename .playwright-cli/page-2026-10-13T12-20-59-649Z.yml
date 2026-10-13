@@ -1,0 +1,123 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - link "Billd home" [ref=e4] [cursor=pointer]:
+      - /url: "#top"
+      - generic [ref=e5]: billd
+    - generic [ref=e13]:
+      - link "Why Billd" [ref=e14] [cursor=pointer]:
+        - /url: "#why-billd"
+      - generic [ref=e15]: Coming soon
+  - region [ref=e16]:
+    - generic [ref=e17]:
+      - paragraph [ref=e18]: A clearer way to choose
+      - heading "Your next card, made clear." [level=1] [ref=e19]
+      - paragraph [ref=e20]: Billd helps people in the UAE compare credit cards without getting lost in the fine print.
+      - link "Join the waitlist" [ref=e21] [cursor=pointer]:
+        - /url: "#waitlist"
+  - region "Compare the details that matter" [ref=e29]:
+    - generic [ref=e30]:
+      - generic [ref=e31]: Eligibility
+      - generic [ref=e33]: Annual fees
+      - generic [ref=e35]: Rewards
+      - generic [ref=e37]: Salary fit
+      - generic [ref=e39]: Cashback
+      - generic [ref=e41]: Travel value
+      - generic [aria-hidden] [ref=e43]: Eligibility
+      - generic [aria-hidden] [ref=e45]: Annual fees
+      - generic [aria-hidden] [ref=e47]: Rewards
+      - generic [aria-hidden] [ref=e49]: Salary fit
+      - generic [aria-hidden] [ref=e51]: Cashback
+      - generic [aria-hidden] [ref=e53]: Travel value
+  - region [ref=e55]:
+    - generic [ref=e57]:
+      - paragraph [ref=e58]: Built for the decision ahead
+      - heading "Less noise. Better choices." [level=2] [ref=e60]: Less noise.Better choices.
+      - paragraph [ref=e62]: The details should help you decide, not make the decision harder.
+  - region "Why Billd is different" [ref=e63]:
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - article [ref=e66]:
+          - generic [ref=e70]:
+            - heading "Find the cards worth your time" [level=3] [ref=e71]
+            - paragraph [ref=e72]: A practical shortlist based on your salary, spending, and priorities.
+        - article [ref=e73]:
+          - generic [ref=e77]:
+            - heading "Understand the real trade-offs" [level=3] [ref=e78]
+            - paragraph [ref=e79]: See fees, rewards, and eligibility before you make a decision.
+        - article [ref=e80]:
+          - generic [ref=e84]:
+            - heading "Choose with more confidence" [level=3] [ref=e85]
+            - paragraph [ref=e86]: Clear guidance first. The final choice stays yours.
+      - generic [ref=e87]:
+        - article [ref=e88]:
+          - paragraph [ref=e89]: Start with fit
+          - generic [ref=e90]:
+            - heading "See what matches your profile." [level=3] [ref=e91]
+            - generic [ref=e92]: Salary requirements and key eligibility details come before the sales pitch.
+        - article [ref=e93]:
+          - paragraph [ref=e94]: Count the cost
+          - generic [ref=e95]:
+            - heading "Know what the card really costs." [level=3] [ref=e96]
+            - generic [ref=e97]: Annual fees, foreign exchange charges, and common conditions stay in view.
+        - article [ref=e98]:
+          - paragraph [ref=e99]: Measure the value
+          - generic [ref=e100]:
+            - heading "Put rewards in context." [level=3] [ref=e101]
+            - generic [ref=e102]: Compare the benefits that matter for how you actually spend in the UAE.
+  - region [ref=e103]:
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - paragraph [ref=e106]: Clarity, in the right order
+        - heading "A card that fits your life" [level=2] [ref=e107]
+        - paragraph [ref=e108]:
+          - generic [aria-hidden] [ref=e109]: A
+          - generic [aria-hidden] [ref=e110]: credit
+          - generic [aria-hidden] [ref=e111]: card
+          - generic [aria-hidden] [ref=e112]: should
+          - generic [aria-hidden] [ref=e113]: fit
+          - generic [aria-hidden] [ref=e114]: your
+          - generic [aria-hidden] [ref=e115]: life
+          - generic [aria-hidden] [ref=e116]: before
+          - generic [aria-hidden] [ref=e117]: it
+          - generic [aria-hidden] [ref=e118]: asks
+          - generic [aria-hidden] [ref=e119]: you
+          - generic [aria-hidden] [ref=e120]: to
+          - generic [aria-hidden] [ref=e121]: change
+          - generic [aria-hidden] [ref=e122]: it.
+      - generic [ref=e123]:
+        - article [ref=e124]:
+          - generic [ref=e125]: Start with fit
+          - heading "See what matches your profile." [level=3] [ref=e130]
+          - paragraph [ref=e131]: Salary requirements and key eligibility details come before the sales pitch.
+        - article [ref=e132]:
+          - generic [ref=e133]: Count the cost
+          - heading "Know what the card really costs." [level=3] [ref=e138]
+          - paragraph [ref=e139]: Annual fees, foreign exchange charges, and common conditions stay in view.
+        - article [ref=e140]:
+          - generic [ref=e141]: Measure the value
+          - heading "Put rewards in context." [level=3] [ref=e146]
+          - paragraph [ref=e147]: Compare the benefits that matter for how you actually spend in the UAE.
+  - region [ref=e148]:
+    - generic [ref=e149]:
+      - generic [ref=e150]:
+        - paragraph [ref=e151]: Be first to know
+        - heading "Get the launch email." [level=2] [ref=e152]
+        - paragraph [ref=e153]: We're putting the finishing touches on a simpler way to compare UAE credit cards.
+      - generic [ref=e155]:
+        - generic [ref=e156]: Email address
+        - generic [ref=e157]:
+          - textbox "Email address" [ref=e158]:
+            - /placeholder: you@example.com
+          - button "Join the waitlist" [ref=e159] [cursor=pointer]
+        - paragraph [ref=e162]: One launch email. No spam.
+  - generic [ref=e164]:
+    - link "Billd home" [ref=e165] [cursor=pointer]:
+      - /url: "#top"
+      - img "Billd" [ref=e166]
+    - generic [ref=e167]:
+      - paragraph [ref=e168]: © 2026 Billd. All rights reserved.
+      - generic "Legal information" [ref=e169]:
+        - generic [ref=e170]: Privacy
+        - generic [ref=e171]: Data
+        - generic [ref=e172]: Terms
+        - generic [ref=e173]: Cookies

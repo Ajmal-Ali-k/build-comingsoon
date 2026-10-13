@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowDownRight, CheckCircle, MagnifyingGlass, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { BilldLogo } from "../components/billd-logo";
 import { MotionController } from "../components/motion-controller";
 import { WaitlistForm } from "../components/waitlist-form";
 
@@ -48,11 +49,11 @@ export default function HomePage() {
     <main className="launch-page">
       <MotionController />
       <header className="header container" data-reveal="header">
-        <a className="brand" href="#top" aria-label="Build home">
-          <span className="brand-logo"><Image src="/images/build-logo-white.png" alt="" width={124} height={59} priority unoptimized /></span>
+        <a className="brand" href="#top" aria-label="Billd home">
+          <BilldLogo className="brand-logo" wordmarkClassName="brand-wordmark" />
         </a>
         <div className="header-right">
-          <a className="header-link" href="#why-build">Why Build</a>
+          <a className="header-link" href="#why-billd">Why Billd</a>
           <span className="status">Coming soon</span>
         </div>
       </header>
@@ -61,7 +62,7 @@ export default function HomePage() {
         <div className="hero-copy" data-reveal="hero-copy">
           <p className="kicker">A clearer way to choose</p>
           <h1 id="page-title">Your next card, made <span>clear.</span></h1>
-          <p className="intro">Build helps people in the UAE compare credit cards without getting lost in the fine print.</p>
+          <p className="intro">Billd helps people in the UAE compare credit cards without getting lost in the fine print.</p>
           <a className="primary-action" href="#waitlist">
             Join the waitlist <ArrowDownRight weight="bold" aria-hidden="true" />
           </a>
@@ -86,7 +87,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="value-section" id="why-build" aria-labelledby="value-title">
+      <section className="value-section" id="why-billd" aria-labelledby="value-title">
         <div className="container">
           <div className="value-showcase" data-reveal="section-heading">
             <p className="section-kicker">Built for the decision ahead</p>
@@ -99,7 +100,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="benefits-section" aria-label="Why Build is different">
+      <section className="benefits-section" aria-label="Why Billd is different">
         <div className="container benefits-inner">
           <div className="benefit-list">
             {benefits.map(({ icon: Icon, title, text }, index) => (
@@ -155,11 +156,11 @@ export default function HomePage() {
 
       <footer className="footer">
         <div className="footer-inner">
-          <a className="footer-wordmark" href="#top" aria-label="Build home" data-reveal="footer-logo">
-            <Image src="/images/build-logo-white.png" alt="Build" width={1821} height={864} unoptimized />
+          <a className="footer-wordmark" href="#top" aria-label="Billd home" data-reveal="footer-logo">
+            <BilldLogo className="footer-logo" wordmarkClassName="footer-brand-wordmark" />
           </a>
           <div className="footer-meta" data-reveal="footer-meta">
-            <p>© 2026 Build. All rights reserved.</p>
+            <p>© 2026 Billd. All rights reserved.</p>
             <div className="footer-legal" aria-label="Legal information">
               <span>Privacy</span>
               <span>Data</span>

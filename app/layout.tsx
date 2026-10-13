@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Build | Coming soon",
-  description: "The clearer way to compare UAE credit cards is coming soon.",
+  title: "Billd | Coming soon",
+  description: "Billd is the clearer way to compare UAE credit cards.",
   icons: {
-    icon: "/icon.svg",
+    icon: "/icon.svg?v=2",
   },
 };
 
