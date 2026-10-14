@@ -10,7 +10,12 @@ describe("waitlist", () => {
 
   it("handles missing, pending, successful, and failed submissions", async () => {
     expect(await submitWaitlistEmail("hello@example.com", undefined)).toBe("missing-configuration");
-    await expect(submitWaitlistEmail("hello@example.com", "https://formspree.io/f/example", vi.fn().mockResolvedValue({ ok: true }))).resolves.toBe("success");
+    const successFetcher = vi.fn().mockResolvedValue({ ok: true });
+    await expect(submitWaitlistEmail(" hello@example.com ", "https://formspree.io/f/example", successFetcher)).resolves.toBe("success");
+    expect(JSON.parse(successFetcher.mock.calls[0][1].body)).toEqual({
+      email: "hello@example.com",
+      source: "Billd coming soon page",
+    });
     await expect(submitWaitlistEmail("hello@example.com", "https://formspree.io/f/example", vi.fn().mockResolvedValue({ ok: false }))).resolves.toBe("error");
 
     let resolveResponse: (response: Response) => void = () => undefined;

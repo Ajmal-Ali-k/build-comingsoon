@@ -1,12 +1,16 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useId, useRef, useState } from "react";
 import { ArrowRight, CheckCircle, WarningCircle } from "@phosphor-icons/react";
 import { submitWaitlistEmail, validateWaitlistEmail } from "../lib/waitlist";
 
 type Status = "idle" | "pending" | "success" | "error" | "missing-configuration";
 
 export function WaitlistForm() {
+  const emailId = useId();
+  const messageId = `${emailId}-message`;
+  const noteId = `${emailId}-note`;
+  const inputRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [validationError, setValidationError] = useState<string | null>(null);
@@ -18,6 +22,7 @@ export function WaitlistForm() {
     if (error) {
       setValidationError(error);
       setStatus("idle");
+      inputRef.current?.focus();
       return;
     }
 
@@ -30,30 +35,30 @@ export function WaitlistForm() {
     return (
       <div className="form-status" role="status" aria-live="polite">
         <CheckCircle weight="fill" aria-hidden="true" />
-        <div><strong>You&apos;re on the list.</strong><p>We&apos;ll send one email when Billd launches.</p></div>
+        <div><strong>You&apos;re on the list.</strong><p>We&apos;ll email you when Billd launches.</p></div>
       </div>
     );
   }
 
   const message = status === "missing-configuration"
-    ? "Waitlist sign-ups are being connected. Please check back shortly."
+    ? "Signups are temporarily unavailable. Please try again later."
     : status === "error"
-      ? "We couldn't save your email. Please try again."
+      ? "Your email wasn’t saved. Please try again."
       : validationError;
 
   return (
-    <form className="form" onSubmit={handleSubmit} noValidate>
-      <label htmlFor="waitlist-email">Email address</label>
+    <form className="form" aria-label="Billd early access" onSubmit={handleSubmit} noValidate>
+      <label htmlFor={emailId}>Email address</label>
       <div className="form-row">
-        <input id="waitlist-email" name="email" type="email" autoComplete="email" inputMode="email" placeholder="you@example.com" value={email} onChange={(event) => { setEmail(event.target.value); if (validationError) setValidationError(null); }} aria-invalid={Boolean(validationError)} aria-describedby={message ? "waitlist-message" : undefined} disabled={status === "pending"} />
+        <input ref={inputRef} id={emailId} name="email" type="email" autoComplete="email" inputMode="email" value={email} onChange={(event) => { setEmail(event.target.value); if (validationError) setValidationError(null); }} aria-invalid={Boolean(validationError)} aria-describedby={message ? `${noteId} ${messageId}` : noteId} disabled={status === "pending"} />
         <button type="submit" disabled={status === "pending"}>
-          {status === "pending" && <span className="button-loader" aria-hidden="true" />}
-          {status === "pending" ? "Joining..." : "Join the waitlist"}
+          {status === "pending" && <span className="button-loader" aria-hidden="true"><i /><i /><i /></span>}
+          {status === "pending" ? "Joining…" : "Join the waitlist"}
           {status !== "pending" && <ArrowRight weight="bold" aria-hidden="true" />}
         </button>
       </div>
-      <p className="form-note">One launch email. No spam.</p>
-      {message && <p className="form-message" id="waitlist-message" role="alert"><WarningCircle weight="fill" aria-hidden="true" /> {message}</p>}
+      <p className="form-note" id={noteId}>One email when Billd launches.</p>
+      {message && <p className="form-message" id={messageId} role="alert"><WarningCircle weight="fill" aria-hidden="true" /> {message}</p>}
     </form>
   );
 }

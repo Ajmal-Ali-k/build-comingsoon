@@ -1,175 +1,92 @@
-import Image from "next/image";
-import { ArrowDownRight, CheckCircle, MagnifyingGlass, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
-import { BilldLogo } from "../components/billd-logo";
+import { ArrowDown, ArrowUpRight, ArrowUp } from "@phosphor-icons/react/dist/ssr";
+import { BilldLogo, BilldMark } from "../components/billd-logo";
+import { CardAnatomy, CardSculpture } from "../components/card-sculpture";
 import { MotionController } from "../components/motion-controller";
+import { RevealLine } from "../components/reveal-line";
 import { WaitlistForm } from "../components/waitlist-form";
 
-const benefits = [
+const comparisons = [
   {
-    icon: MagnifyingGlass,
-    title: "Find the cards worth your time",
-    text: "A practical shortlist based on your salary, spending, and priorities.",
+    label: "Eligibility",
+    title: "Start with you.",
+    description: "See salary requirements and who can apply.",
+    detail: "Employment and residency can also affect eligibility. The bank makes the final decision.",
   },
   {
-    icon: CheckCircle,
-    title: "Understand the real trade-offs",
-    text: "See fees, rewards, and eligibility before you make a decision.",
+    label: "Fees",
+    title: "Count the whole cost.",
+    description: "Compare annual fees, charges abroad and the terms behind fee waivers.",
+    detail: "A fee waiver may depend on how much you spend. Charges abroad can add to the cost.",
   },
   {
-    icon: ShieldCheck,
-    title: "Choose with more confidence",
-    text: "Clear guidance first. The final choice stays yours.",
-  },
-];
-
-const marqueeItems = ["Eligibility", "Annual fees", "Rewards", "Salary fit", "Cashback", "Travel value"];
-
-const storyCards = [
-  {
-    eyebrow: "Start with fit",
-    title: "See what matches your profile.",
-    text: "Salary requirements and key eligibility details come before the sales pitch.",
-  },
-  {
-    eyebrow: "Count the cost",
-    title: "Know what the card really costs.",
-    text: "Annual fees, foreign exchange charges, and common conditions stay in view.",
-  },
-  {
-    eyebrow: "Measure the value",
-    title: "Put rewards in context.",
-    text: "Compare the benefits that matter for how you actually spend in the UAE.",
+    label: "Rewards",
+    title: "Make the perks count.",
+    description: "Understand cashback, miles and perks based on how you spend.",
+    detail: "Reward limits, excluded purchases and redemption rules can change what a benefit is worth.",
   },
 ];
-
-const revealSentence = "A credit card should fit your life before it asks you to change it.".split(" ");
 
 export default function HomePage() {
   return (
-    <main className="launch-page">
-      <MotionController />
-      <header className="header container" data-reveal="header">
-        <a className="brand" href="#top" aria-label="Billd home">
-          <BilldLogo className="brand-logo" wordmarkClassName="brand-wordmark" />
-        </a>
-        <div className="header-right">
-          <a className="header-link" href="#why-billd">Why Billd</a>
-          <span className="status">Coming soon</span>
-        </div>
+    <MotionController>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <header className="site-header container" id="top" data-entrance="header">
+        <a className="brand" href="#top" aria-label="Billd home"><BilldLogo className="brand-logo" wordmarkClassName="brand-wordmark" /></a>
+        <span className="launch-location"><span className="status-dot" />Launching in the UAE</span>
+        <nav aria-label="Main"><a className="nav-action" href="#waitlist" data-magnetic>Join the waitlist <ArrowUpRight weight="bold" aria-hidden="true" /></a></nav>
       </header>
-
-      <section className="hero container" id="top" aria-labelledby="page-title">
-        <div className="hero-copy" data-reveal="hero-copy">
-          <p className="kicker">A clearer way to choose</p>
-          <h1 id="page-title">Your next card, made <span>clear.</span></h1>
-          <p className="intro">Billd helps people in the UAE compare credit cards without getting lost in the fine print.</p>
-          <a className="primary-action" href="#waitlist">
-            Join the waitlist <ArrowDownRight weight="bold" aria-hidden="true" />
-          </a>
-        </div>
-        <div className="hero-art" aria-hidden="true" data-reveal="hero-art">
-          <div className="hero-model">
-            <span className="hero-orbit" />
-            <span className="hero-spark hero-spark-one" />
-            <span className="hero-spark hero-spark-two" />
-            <Image className="hero-main-image" src="/images/hero-card-globe.png" alt="" width={1254} height={1254} priority sizes="(max-width: 767px) 94vw, 48vw" />
-          </div>
-        </div>
-      </section>
-
-      <section className="marquee" aria-label="Compare the details that matter">
-        <div className="marquee-track">
-          {[...marqueeItems, ...marqueeItems].map((item, index) => (
-            <span key={`${item}-${index}`} aria-hidden={index >= marqueeItems.length}>
-              {item}<i />
-            </span>
-          ))}
-        </div>
-      </section>
-
-      <section className="value-section" id="why-billd" aria-labelledby="value-title">
-        <div className="container">
-          <div className="value-showcase" data-reveal="section-heading">
-            <p className="section-kicker">Built for the decision ahead</p>
-            <div className="value-heading-row">
-              <h2 id="value-title" className="value-title">Less noise.<br /><span>Better choices.</span></h2>
-              <div className="value-art" aria-hidden="true"><Image src="/images/decision-gateway.png" alt="" width={1190} height={1322} /></div>
-            </div>
-            <p className="value-intro">The details should help you decide, not make the decision harder.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="benefits-section" aria-label="Why Billd is different">
-        <div className="container benefits-inner">
-          <div className="benefit-list">
-            {benefits.map(({ icon: Icon, title, text }, index) => (
-              <article className={`benefit benefit-${index + 1}`} key={title}>
-                <Icon weight="duotone" aria-hidden="true" />
-                <div><h3>{title}</h3><p>{text}</p></div>
-              </article>
-            ))}
-          </div>
-
-          <div className="decision-accordion" data-reveal="accordion">
-            {storyCards.map((card) => (
-              <article className="decision-panel" key={card.eyebrow}>
-                <p>{card.eyebrow}</p>
-                <div><h3>{card.title}</h3><span>{card.text}</span></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="story-section" aria-labelledby="story-title">
-        <div className="container story-grid">
-          <div className="story-copy">
-            <p className="section-kicker">Clarity, in the right order</p>
-            <h2 id="story-title" className="sr-only">A card that fits your life</h2>
-            <p className="story-statement" aria-label={revealSentence.join(" ")}>
-              {revealSentence.map((word, index) => <span className="reveal-word" key={`${word}-${index}`} aria-hidden="true">{word} </span>)}
-            </p>
-          </div>
-          <div className="story-stack">
-            {storyCards.map((card, index) => (
-              <article className={`story-card story-card-${index + 1}`} key={card.title}>
-                <div className="story-card-top"><span>{card.eyebrow}</span><CheckCircle weight="duotone" aria-hidden="true" /></div>
-                <h3>{card.title}</h3>
-                <p>{card.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="waitlist" id="waitlist" aria-labelledby="waitlist-title">
-        <div className="container waitlist-grid">
-          <div data-reveal="waitlist-copy">
-            <p className="section-kicker section-kicker-lime">Be first to know</p>
-            <h2 id="waitlist-title">Get the launch email.</h2>
-            <p>We&apos;re putting the finishing touches on a simpler way to compare UAE credit cards.</p>
-          </div>
-          <div className="form-panel" data-reveal="waitlist-form"><WaitlistForm /></div>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <div className="footer-inner">
-          <a className="footer-wordmark" href="#top" aria-label="Billd home" data-reveal="footer-logo">
-            <BilldLogo className="footer-logo" wordmarkClassName="footer-brand-wordmark" />
-          </a>
-          <div className="footer-meta" data-reveal="footer-meta">
-            <p>© 2026 Billd. All rights reserved.</p>
-            <div className="footer-legal" aria-label="Legal information">
-              <span>Privacy</span>
-              <span>Data</span>
-              <span>Terms</span>
-              <span>Cookies</span>
+      <main id="main-content" tabIndex={-1}>
+        <section className="hero container" aria-labelledby="page-title">
+          <div className="hero-copy">
+            <p className="eyebrow" data-entrance="kicker">UAE credit cards, decoded.</p>
+            <h1 id="page-title" aria-label="Find your kind of card."><RevealLine text="Find your" /><RevealLine text="kind of card." className="hero-accent" /></h1>
+            <div className="hero-intro" data-entrance="signup">
+              <p>See who can apply, what you’ll pay and what you get back. Find a UAE credit card that fits your life.</p>
+              <div className="hero-signup"><WaitlistForm /></div>
             </div>
           </div>
-        </div>
+          <div className="hero-art" data-entrance="art"><CardSculpture /></div>
+          <a className="hero-scroll" href="#comparison"><span>See the whole card</span><ArrowDown weight="bold" aria-hidden="true" /></a>
+        </section>
+
+        <section className="story-section" id="comparison" aria-labelledby="comparison-title">
+          <div className="container story-heading" data-enter>
+            <span className="section-index" aria-hidden="true">01 — A closer look</span>
+            <h2 id="comparison-title">One card.<br /><span>The whole picture.</span></h2>
+          </div>
+          <div className="container story-layout">
+            <div className="story-visual"><div className="story-stage"><CardAnatomy /></div></div>
+            <div className="story-steps">
+              {comparisons.map((item, index) => (
+                <article className="story-step" key={item.label} data-story-step={index}>
+                  <div className="step-kicker"><span className="step-number">0{index + 1}</span><span>{item.label}</span><span className="step-rule" aria-hidden="true" /></div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <details className="card-detail"><summary>Why it matters <span aria-hidden="true" /></summary><p>{item.detail}</p></details>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="belief-section container" aria-labelledby="belief-title">
+          <div className="belief-top" data-enter><span className="section-index">02 — Our point of view</span><BilldMark className="belief-mark" /></div>
+          <h2 id="belief-title" data-enter>Clarity.<br /><span>Not a sales pitch.</span></h2>
+          <div className="belief-bottom" data-enter><span className="belief-line" aria-hidden="true" /><p>Built to clarify the decision,<br />not sell you a card.</p></div>
+        </section>
+
+        <section className="closing-section" id="waitlist" aria-labelledby="waitlist-title">
+          <div className="container closing-layout">
+            <div className="closing-heading" data-enter><p className="eyebrow"><span className="status-dot" />Coming soon</p><h2 id="waitlist-title">Your next card.<br /><span>A clearer choice.</span></h2></div>
+            <div className="closing-signup" data-enter><p>Be first to know when Billd launches.</p><WaitlistForm /></div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-footer container">
+        <div className="footer-colophon"><span>UAE · © {new Date().getFullYear()} Billd</span><a href="#top">Back to top <ArrowUp weight="bold" aria-hidden="true" /></a></div>
+        <BilldLogo className="footer-logo" wordmarkClassName="footer-wordmark" />
       </footer>
-    </main>
+    </MotionController>
   );
 }

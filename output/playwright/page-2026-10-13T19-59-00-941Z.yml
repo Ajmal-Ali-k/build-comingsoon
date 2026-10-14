@@ -1,0 +1,118 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - link "Skip to content" [ref=e3] [cursor=pointer]:
+      - /url: "#main-content"
+    - generic [ref=e4]:
+      - link "Billd home" [ref=e5] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e6]: billd
+      - generic [ref=e14]: A clearer take on UAE credit cards
+      - link "Get early access" [ref=e15] [cursor=pointer]:
+        - /url: "#waitlist"
+    - region [ref=e18]:
+      - generic [ref=e19]:
+        - paragraph [ref=e20]: Coming soon to the UAE
+        - heading "A better card. A clearer choice." [level=1] [ref=e22]: A better card.A clearer choice.
+        - paragraph [ref=e23]: The rewards catch your eye. The details make the difference. Billd helps you compare UAE credit cards with the whole picture in view.
+        - form "Billd early access" [ref=e25]:
+          - generic [ref=e26]: Email address
+          - generic [ref=e27]:
+            - textbox "Email address" [ref=e28]:
+              - /placeholder: you@example.com
+            - button "Join the waitlist" [ref=e29] [cursor=pointer]
+          - paragraph [ref=e32]: One email when we launch. That’s it.
+      - figure "The whole card. Not just the headline. Illustration" [ref=e33]:
+        - generic [ref=e34]: Look a little closer.
+        - img [aria-hidden] [ref=e38]:
+          - generic [ref=e39]:
+            - generic [ref=e43]: Annual fees
+            - generic [ref=e44]: The actual cost
+            - generic [ref=e46]: Eligibility
+            - generic [ref=e47]: Your profile
+            - generic [ref=e49]: Rewards
+            - generic [ref=e50]: Everyday value
+          - generic [ref=e51]:
+            - generic [ref=e56]: billd
+            - generic [ref=e60]: •••• •••• ••••
+            - generic [ref=e61]: A CLEARER CHOICE
+          - generic [ref=e64]: The details
+          - generic [ref=e65]: make the difference.
+        - generic [ref=e67]:
+          - generic [ref=e68]: The whole card. Not just the headline.
+          - generic [ref=e69]: Illustration
+      - generic [ref=e70]:
+        - paragraph [ref=e71]: Made for the way you earn, spend and live.
+        - link "What goes into a better choice" [ref=e72] [cursor=pointer]:
+          - /url: "#comparison"
+    - region [ref=e75]:
+      - generic [ref=e76]:
+        - paragraph [ref=e77]: A little more clarity
+        - heading "There’s more to a card than the card." [level=2] [ref=e78]: There’s more to a cardthan the card.
+        - paragraph [ref=e79]: We’re building a simpler way to compare the things that matter. Three questions. The details behind each one.
+      - generic [ref=e80]:
+        - article [ref=e81]:
+          - generic [ref=e82]:
+            - generic [ref=e83]: "01"
+            - paragraph [ref=e84]: The fit
+          - generic [ref=e85]:
+            - heading "A card you can actually get." [level=3] [ref=e86]
+            - paragraph [ref=e87]: Salary requirements and eligibility, upfront. Start with the cards that make sense for your profile.
+            - group [ref=e88]:
+              - generic "Why it matters" [ref=e89] [cursor=pointer]
+          - 'list "What Billd will compare: the fit" [ref=e91]':
+            - listitem [ref=e92]: + Salary requirements
+            - listitem [ref=e93]: + Eligibility criteria
+        - article [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]: "02"
+            - paragraph [ref=e97]: The cost
+          - generic [ref=e98]:
+            - heading "The offer. And the small print." [level=3] [ref=e99]
+            - paragraph [ref=e100]: Annual fees, fee-waiver conditions and charges abroad. A reward is only useful when you know its price.
+            - group [ref=e101]:
+              - generic "Why it matters" [ref=e102] [cursor=pointer]
+          - 'list "What Billd will compare: the cost" [ref=e104]':
+            - listitem [ref=e105]: + Annual fees
+            - listitem [ref=e106]: + FX charges
+            - listitem [ref=e107]: + Waiver conditions
+        - article [ref=e108]:
+          - generic [ref=e109]:
+            - generic [ref=e110]: "03"
+            - paragraph [ref=e111]: The return
+          - generic [ref=e112]:
+            - heading "Rewards that meet real life." [level=3] [ref=e113]
+            - paragraph [ref=e114]: Cashback, miles and perks, in the context of your everyday spending. Look past the welcome offer.
+            - group [ref=e115]:
+              - generic "Why it matters" [ref=e116] [cursor=pointer]
+          - 'list "What Billd will compare: the return" [ref=e118]':
+            - listitem [ref=e119]: + Cashback & miles
+            - listitem [ref=e120]: + Reward limits
+            - listitem [ref=e121]: + Everyday perks
+    - region [ref=e122]:
+      - generic [ref=e123]:
+        - paragraph [ref=e131]: A simple principle
+        - heading "Built to clarify the decision, not sell you a card." [level=2] [ref=e132]: Built to clarifythe decision,not sell you a card.
+        - generic [ref=e133]:
+          - generic [aria-hidden] [ref=e134]: ↳
+          - paragraph [ref=e135]: Less guesswork.More understanding.The choice stays yours.
+    - region [ref=e136]:
+      - generic [ref=e137]:
+        - generic [ref=e138]:
+          - paragraph [ref=e139]: Be here from the beginning
+          - heading "Your next card. A better starting point." [level=2] [ref=e140]: Your next card.A better starting point.
+        - generic [ref=e141]:
+          - paragraph [ref=e142]: Billd is coming to the UAE.Leave your email. We’ll let you know when it’s ready.
+          - form "Billd early access" [ref=e143]:
+            - generic [ref=e144]: Email address
+            - generic [ref=e145]:
+              - textbox "Email address" [ref=e146]:
+                - /placeholder: you@example.com
+              - button "Join the waitlist" [ref=e147] [cursor=pointer]
+            - paragraph [ref=e150]: One email when we launch. That’s it.
+    - generic [ref=e151]:
+      - link "Back to Billd home" [ref=e152] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e153]: billd
+      - paragraph [ref=e161]: Clearer choices, coming soon.
+      - generic [ref=e162]: UAE · © 2026 Billd
+  - alert [ref=e163]

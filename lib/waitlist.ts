@@ -13,7 +13,7 @@ export async function submitWaitlistEmail(email: string, endpoint: string | unde
     const response = await fetcher(endpoint, {
       method: "POST",
       headers: { "Accept": "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email.trim(), source: "Build coming soon page" }),
+      body: JSON.stringify({ email: email.trim(), source: "Billd coming soon page" }),
     });
     return response.ok ? "success" : "error";
   } catch {

@@ -1,0 +1,70 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - link "Skip to content" [ref=e3] [cursor=pointer]:
+      - /url: "#main-content"
+    - generic [ref=e4]:
+      - link "Billd home" [ref=e5] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e6]: billd
+      - link "Get early access" [ref=e14] [cursor=pointer]:
+        - /url: "#waitlist"
+    - region [ref=e17]:
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: Coming soon to the UAE
+        - heading "A better card. A clearer choice." [level=1] [ref=e21]: A better card.A clearer choice.
+        - paragraph [ref=e22]: Compare UAE credit cards. See who can apply, what you’ll pay and what you get back.
+        - form "Billd early access" [ref=e24]:
+          - generic [ref=e25]: Email address
+          - generic [ref=e26]:
+            - textbox "Email address" [ref=e27]
+            - button "Join the waitlist" [ref=e28] [cursor=pointer]
+          - paragraph [ref=e31]: One email when Billd launches.
+      - img [aria-hidden] [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e38]: Annual fees
+          - generic [ref=e40]: Eligibility
+          - generic [ref=e42]: Rewards
+        - generic [ref=e43]: billd
+      - link "What Billd compares" [ref=e53] [cursor=pointer]:
+        - /url: "#comparison"
+    - region [ref=e56]:
+      - heading "Know before you choose." [level=2] [ref=e58]
+      - generic [ref=e59]:
+        - article [ref=e60]:
+          - paragraph [ref=e61]: Eligibility
+          - generic [ref=e62]:
+            - heading "Does it fit?" [level=3] [ref=e63]
+            - paragraph [ref=e64]: See salary requirements and who can apply.
+            - group [ref=e65]:
+              - generic "Why it matters" [ref=e66] [cursor=pointer]
+        - article [ref=e68]:
+          - paragraph [ref=e69]: Fees
+          - generic [ref=e70]:
+            - heading "What will you pay?" [level=3] [ref=e71]
+            - paragraph [ref=e72]: Compare annual fees, charges abroad and the terms behind fee waivers.
+            - group [ref=e73]:
+              - generic "Why it matters" [ref=e74] [cursor=pointer]
+        - article [ref=e76]:
+          - paragraph [ref=e77]: Rewards
+          - generic [ref=e78]:
+            - heading "What do you get back?" [level=3] [ref=e79]
+            - paragraph [ref=e80]: Understand cashback, miles and perks based on how you spend.
+            - group [ref=e81]:
+              - generic "Why it matters" [ref=e82] [cursor=pointer]
+    - region [ref=e84]:
+      - heading "Built to clarify the decision, not sell you a card." [level=2] [ref=e92]: Built to clarifythe decision,not sell you a card.
+    - region [ref=e93]:
+      - generic [ref=e94]:
+        - heading "Be first to know." [level=2] [ref=e95]
+        - form "Billd early access" [ref=e97]:
+          - generic [ref=e98]: Email address
+          - generic [ref=e99]:
+            - textbox "Email address" [ref=e100]
+            - button "Join the waitlist" [ref=e101] [cursor=pointer]
+          - paragraph [ref=e104]: One email when Billd launches.
+    - generic [ref=e105]:
+      - link "Back to Billd home" [ref=e106] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e107]: billd
+      - generic [ref=e115]: UAE · © 2026 Billd
+  - alert [ref=e116]

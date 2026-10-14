@@ -1,109 +1,89 @@
 "use client";
 
+import { ReactNode, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export function MotionController() {
-  useGSAP(() => {
+export function MotionController({ children }: { children: ReactNode }) {
+  const scope = useRef<HTMLDivElement | null>(null);
+  useGSAP((_context, contextSafe) => {
+    const root = scope.current;
+    if (!root || !contextSafe) return;
+    const select = gsap.utils.selector(root);
     const media = gsap.matchMedia();
-
     media.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.timeline({ defaults: { ease: "power3.out" } })
-        .from("[data-reveal='header']", { y: -20, opacity: 0, duration: 0.7 })
-        .from("[data-reveal='hero-copy'] > *", { y: 34, opacity: 0, duration: 0.85, stagger: 0.06 }, "-=0.35")
-        .from("[data-reveal='hero-art']", { x: 42, scale: 0.9, opacity: 0, duration: 1.1 }, "-=0.8");
+      gsap.timeline({ defaults: { ease: "power3.out", clearProps: "transform,opacity,visibility" } })
+        .from(select("[data-entrance='header']"), { y: -10, duration: .4 }, 0)
+        .from(select("[data-entrance='kicker']"), { y: 12, autoAlpha: 0, duration: .4 }, .1)
+        .from(select(".reveal-character"), { yPercent: 105, autoAlpha: 0, rotation: 3, duration: .65, stagger: { amount: .3 } }, .15)
+        .from(select("[data-entrance='art']"), { y: 36, scale: .94, autoAlpha: 0, duration: .85 }, .3)
+        .from(select("[data-entrance='signup']"), { y: 16, duration: .55 }, .4);
 
-      gsap.utils.toArray<HTMLElement>("[data-reveal]:not([data-reveal='header']):not([data-reveal='hero-copy']):not([data-reveal='hero-art'])").forEach((element) => {
-        gsap.from(element, {
-          y: 44,
-          opacity: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: { trigger: element, start: "top 86%", once: true },
-        });
+      root.querySelectorAll<HTMLElement>("[data-enter]").forEach((element) => {
+        gsap.from(element, { y: 24, duration: .65, ease: "power3.out", clearProps: "transform", scrollTrigger: { trigger: element, start: "top 90%", once: true } });
       });
 
-      gsap.to(".marquee-track", { xPercent: -50, duration: 24, ease: "none", repeat: -1 });
-
-    });
-
-    media.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-      const benefitCards = gsap.utils.toArray<HTMLElement>(".benefit");
-      const benefitTimeline = gsap.timeline({
-        scrollTrigger: { trigger: ".benefit-list", start: "top 82%", once: true },
-        defaults: { duration: 0.65, ease: "power3.out", clearProps: "transform,opacity" },
+      const steps = root.querySelectorAll<HTMLElement>(".story-step");
+      steps.forEach((step) => {
+        gsap.from(step.querySelectorAll("h3, .step-kicker, :scope > p"), { y: 18, duration: .55, stagger: .06, ease: "power3.out", clearProps: "transform", scrollTrigger: { trigger: step, start: "top 85%", once: true } });
+        gsap.from(step.querySelector(".step-rule"), { scaleX: 0, duration: .7, ease: "power3.out", scrollTrigger: { trigger: step, start: "top 80%", once: true } });
       });
+    }, root);
 
-      benefitTimeline
-        .from(benefitCards[0], { y: 78, opacity: 0 })
-        .from(benefitCards[1], { x: 68, y: -24, opacity: 0 }, "-=0.48")
-        .from(benefitCards[2], { x: 68, y: 28, opacity: 0 }, "-=0.5");
-
-      const cards = gsap.utils.toArray<HTMLElement>(".story-card");
-      const words = gsap.utils.toArray<HTMLElement>(".reveal-word");
-      const wordGroups = [words.slice(0, 5), words.slice(5, 10), words.slice(10)];
-
-      gsap.set(cards, { position: "absolute", inset: 0, yPercent: -118, scale: 0.96, opacity: 0 });
-
-      const storyTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".story-section",
-          start: "top top",
-          end: `+=${cards.length * 100}%`,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
+    media.add("(min-width: 801px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)", () => {
+      const layout = root.querySelector<HTMLElement>(".story-layout");
+      const stage = root.querySelector<HTMLElement>(".story-stage");
+      if (!layout || !stage) return;
+      gsap.to(select(".sculpture-parallax"), { y: -40, rotation: 3, ease: "none", scrollTrigger: { trigger: root.querySelector(".hero"), start: "top top", end: "bottom top", scrub: .6 } });
+      ScrollTrigger.create({ trigger: stage, pin: stage, pinSpacing: false, start: "top top+=64", endTrigger: layout, end: () => `bottom top+=${stage.offsetHeight + 64}`, invalidateOnRefresh: true });
+      gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: { trigger: layout, start: "top center", end: "bottom 65%", scrub: .65, invalidateOnRefresh: true } })
+        .from(select(".anatomy-layer--fit"), { y: -15, rotation: 0, duration: .7 }, 0)
+        .from(select(".anatomy-layer--fees"), { y: 20, rotation: -5, duration: .7 }, .2)
+        .from(select(".anatomy-layer--rewards"), { y: 55, rotation: -9, duration: .7 }, .4);
+      const layers = root.querySelectorAll<HTMLElement>(".anatomy-layer .layer-face");
+      root.querySelectorAll<HTMLElement>(".story-step").forEach((step, index) => {
+        gsap.from(layers[index], { scale: .98, duration: .4, ease: "power2.out", scrollTrigger: { trigger: step, start: "top center", once: true } });
       });
+    }, root);
 
-      cards.forEach((card, index) => {
-        const phase = `story-phase-${index + 1}`;
-        storyTimeline.addLabel(phase);
-
-        if (index > 0) {
-          storyTimeline.to(cards[index - 1], { y: 22, scale: 0.94, opacity: 0.48, duration: 1, ease: "none" }, phase);
-        }
-
-        storyTimeline
-          .to(card, { yPercent: 0, scale: 1, opacity: 1, duration: 1, ease: "none" }, phase)
-          .to(wordGroups[index], { opacity: 1, stagger: 0.05, duration: 0.72, ease: "none" }, phase);
+    media.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
+      const cleanups: (() => void)[] = [];
+      root.querySelectorAll<HTMLElement>("[data-magnetic]").forEach((element) => {
+        const xTo = gsap.quickTo(element, "x", { duration: .3, ease: "power3.out" });
+        const yTo = gsap.quickTo(element, "y", { duration: .3, ease: "power3.out" });
+        let rect = element.getBoundingClientRect();
+        const enter = () => { rect = element.getBoundingClientRect(); };
+        const move = (event: PointerEvent) => { xTo((event.clientX - rect.left - rect.width / 2) * .1); yTo((event.clientY - rect.top - rect.height / 2) * .12); };
+        const leave = () => { xTo(0); yTo(0); };
+        element.addEventListener("pointerenter", enter);
+        element.addEventListener("pointermove", move);
+        element.addEventListener("pointerleave", leave);
+        cleanups.push(() => { element.removeEventListener("pointerenter", enter); element.removeEventListener("pointermove", move); element.removeEventListener("pointerleave", leave); });
       });
-    });
+      const art = root.querySelector<HTMLElement>(".hero-art");
+      const face = root.querySelector<HTMLElement>(".sculpture-face");
+      if (art && face) {
+        const rotateTo = gsap.quickTo(face, "rotation", { duration: .65, ease: "power3.out" });
+        let rect = art.getBoundingClientRect();
+        const enter = () => { rect = art.getBoundingClientRect(); };
+        const move = (event: PointerEvent) => { rotateTo((event.clientX - rect.left - rect.width / 2) / rect.width * 5); };
+        const leave = () => { rotateTo(0); };
+        art.addEventListener("pointerenter", enter);
+        art.addEventListener("pointermove", move);
+        art.addEventListener("pointerleave", leave);
+        cleanups.push(() => { art.removeEventListener("pointerenter", enter); art.removeEventListener("pointermove", move); art.removeEventListener("pointerleave", leave); });
+      }
+      return () => cleanups.forEach((cleanup) => cleanup());
+    }, root);
 
-    media.add("(max-width: 767px) and (prefers-reduced-motion: no-preference)", () => {
-      gsap.from(".benefit", {
-        y: 42,
-        opacity: 0,
-        duration: 0.55,
-        stagger: 0.08,
-        ease: "power3.out",
-        clearProps: "transform,opacity",
-        scrollTrigger: { trigger: ".benefit-list", start: "top 86%", once: true },
-      });
-
-      gsap.to(".reveal-word", {
-        opacity: 1,
-        stagger: 0.08,
-        ease: "none",
-        scrollTrigger: { trigger: ".story-copy", start: "top 75%", end: "bottom 42%", scrub: 1 },
-      });
-
-      gsap.utils.toArray<HTMLElement>(".story-card").forEach((card) => {
-        gsap.from(card, {
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: { trigger: card, start: "top 86%", once: true },
-        });
-      });
-    });
-
-    return () => media.revert();
-  });
-
-  return null;
+    const refresh = contextSafe(() => ScrollTrigger.refresh());
+    let active = true;
+    void document.fonts.ready.then(() => { if (active) refresh(); });
+    root.addEventListener("toggle", refresh, true);
+    return () => { active = false; root.removeEventListener("toggle", refresh, true); media.revert(); };
+  }, { scope });
+  return <div className="billd-site" ref={scope}>{children}</div>;
 }
